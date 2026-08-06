@@ -38,3 +38,10 @@ Throughout this course, the project will be expanded with more features such as 
 | `task_manager.py` | Main Week 2 Task Manager application that models tasks using a list of dictionaries and supports adding, viewing, completing, and deleting tasks. |
 | `data_model.md` | Documents the Task Manager data model, including the task dictionary structure, requirements mapping, and design assumptions. |
 
+## Week 2 Progress
+
+Adding file persistence solved the problem of losing tasks when the program closes. 
+The Task Manager can now save tasks into a JSON file and load them again in future sessions.
+
+Without handling FileNotFoundError, the program would crash when trying to open a save file that does not exist yet. 
+Error handling connects to the QA mindset because it helps developers consider unexpected inputs, edge cases, and prevent failures during real-world usage.
