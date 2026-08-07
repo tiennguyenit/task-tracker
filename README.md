@@ -1,47 +1,108 @@
 # Task Tracker
 
-Author: Tien Nguyen
+**Author:** Tien Nguyen
 
-Task Tracker is a Python-based application that helps users create and manage tasks. 
-Throughout this course, the project will be expanded with more features such as task management and tracking.
+## Description
 
-## Features
+Task Tracker is a Python command-line application for creating and managing tasks. The project demonstrates object-oriented programming concepts including encapsulation, inheritance, polymorphism, JSON file persistence, exception handling, and unit testing. Users can create normal, urgent, and recurring tasks, save them to a JSON file, and reload them when the program starts.
 
-- Add new tasks
+---
+
+# How to Run
+
+## 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/task-tracker.git
+```
+
+## 2. Open the project folder
+
+```bash
+cd task-tracker
+```
+
+## 3. Run the Task Manager
+
+```bash
+python3 task_manager.py
+```
+
+## 4. Run the unit tests
+
+```bash
+python3 -m unittest test_task.py -v
+```
+
+---
+
+# Features
+
+- Add normal tasks
+- Add urgent tasks with deadlines
+- Add recurring tasks with frequencies
 - View all tasks
 - Mark tasks as completed
 - Delete tasks
-- Assign task priorities (High, Medium, Low)
+- Set task priorities (high, medium, low)
 - Track estimated completion time
-- Store tasks using Python dictionaries inside a list
-- Practice software design using modular functions and documentation
+- Save tasks to JSON
+- Load tasks from JSON
+- Supports inheritance and polymorphism
+- Includes unit tests using Python's unittest module
 
-## Technologies Used
+---
+
+# Technologies Used
 
 - Python 3
+- JSON
 - Git
 - GitHub
 - Visual Studio Code
-- Jupyter Notebook (for practice)
 
-## Project Structure
+---
+
+# Project Structure
 
 | File | Description |
 |------|-------------|
-| `README.md` | Overview of what includes in this repo, technologies used, and file structure. |
-| `task_input.py` | Collects basic task information using variables, data types, and user input/output. |
-| `task_input111.py` | Practice version of the task input program used to experiment with Python fundamentals. |
-| `task_tracker_exercise.py` | Additional practice exercises in Week 1 Day 2 completed while learning Python functions and program structure. |
-| `task_priority.py` | Adds task priority logic using `if`, `elif`, `else`, and a `while` loop. |
-| `test_cases.md` | Contains test cases for validating the Task Tracker Priority Checker with expected, edge, and invalid input scenarios. |
-| `task_tracker.py` | Refactors the Task Tracker into reusable functions with parameters, return values, scope, default parameters, and docstrings. |
-| `task_manager.py` | Main Week 2 Task Manager application that models tasks using a list of dictionaries and supports adding, viewing, completing, and deleting tasks. |
-| `data_model.md` | Documents the Task Manager data model, including the task dictionary structure, requirements mapping, and design assumptions. |
+| `README.md` | Project overview and documentation. |
+| `task.py` | Contains the `Task`, `UrgentTask`, and `RecurringTask` classes plus the `task_from_dict()` factory function. |
+| `task_manager.py` | Main command-line Task Manager application. |
+| `test_task.py` | Unit tests for all task classes. |
+| `tasks.json` | Stores task data between program runs. |
+| `code_review.md` | Self-review and release readiness checklist. |
+| `bug_report.md` | Documents known bugs. |
+| `data_model.md` | Describes the Task Manager data model. |
+| `test_results.txt` | Output showing all unit tests passed successfully. |
+| `task_input.py` | Week 1 practice for collecting task information. |
+| `task_input111.py` | Additional Week 1 practice program. |
+| `task_priority.py` | Priority validation practice. |
+| `task_tracker.py` | Function-based Task Tracker implementation. |
+| `task_tracker_exercise.py` | Week 1 function exercises. |
+| `test_cases.md` | Test cases created during earlier development. |
 
-## Week 2 Progress
+---
 
-Adding file persistence solved the problem of losing tasks when the program closes. 
-The Task Manager can now save tasks into a JSON file and load them again in future sessions.
+# Known Bugs and Limitations
 
-Without handling FileNotFoundError, the program would crash when trying to open a save file that does not exist yet. 
-Error handling connects to the QA mindset because it helps developers consider unexpected inputs, edge cases, and prevent failures during real-world usage.
+- Priority validation is case-sensitive. Entering `High` or `LOW` is rejected instead of automatically converting to lowercase.
+- Negative estimated time values are accepted and should be validated before creating a task.
+
+---
+
+# Future Improvements
+
+- Add task editing functionality.
+- Add sorting and filtering by priority or completion status.
+- Validate negative estimated time input.
+- Add due dates for normal tasks.
+- Build a graphical user interface (GUI).
+- Support searching tasks by keyword.
+
+---
+
+# Week 2 Summary
+
+During Week 2, the project evolved from a simple task list into a complete object-oriented application. File persistence was implemented using JSON, inheritance was introduced through `UrgentTask` and `RecurringTask`, polymorphism allowed multiple task types to be managed together, and unit tests were added to verify that the application behaves correctly.
