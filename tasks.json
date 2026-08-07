@@ -1,20 +1,32 @@
 [
     {
+        "type": "Task",
         "name": "Buy groceries",
         "priority": "high",
         "estimated_time": 30,
         "is_complete": false
     },
     {
+        "type": "Task",
         "name": "Buy books",
         "priority": "medium",
         "estimated_time": 20,
         "is_complete": false
     },
     {
-        "name": "Buy groceries",
+        "type": "UrgentTask",
+        "name": "Fix server outage",
         "priority": "high",
-        "estimated_time": 30,
-        "is_complete": true
+        "estimated_time": 5,
+        "is_complete": false,
+        "deadline": "2024-12-01"
+    },
+    {
+        "type": "RecurringTask",
+        "name": "Team standup",
+        "priority": "medium",
+        "estimated_time": 15,
+        "is_complete": false,
+        "frequency": "daily"
     }
 ]
