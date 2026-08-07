@@ -528,6 +528,276 @@ def run_manager():
 run_manager()
 
 
+# In[4]:
+
+
+# Week 2 Day 3
+
+# ==================================================
+# Program: Task Manager
+# Author: Tien Nguyen
+# Description:
+# A command-line Task Manager that uses a Task class,
+# JSON file persistence, and error handling.
+# ==================================================
+
+import json
+from task import Task
+
+# Constant representing the JSON file used to save tasks
+TASKS_FILE = "tasks.json"
+
+# Global list that stores all Task objects
+tasks = []
+
+
+def save_tasks():
+    """
+    Saves all tasks to a JSON file.
+    """
+
+    with open(TASKS_FILE, "w") as file:
+        json.dump(
+            [task.to_dict() for task in tasks],
+            file,
+            indent=4
+        )
+
+    print("Tasks saved.")
+
+
+def load_tasks():
+    """
+    Loads tasks from the JSON file.
+
+    If the file does not exist or is corrupted,
+    an empty task list is created.
+    """
+
+    global tasks
+
+    try:
+        with open(TASKS_FILE, "r") as file:
+            tasks = [
+                Task.from_dict(task)
+                for task in json.load(file)
+            ]
+
+        print(f"Loaded {len(tasks)} task(s).")
+
+    except FileNotFoundError:
+        tasks = []
+        print("No saved file found. Starting with an empty task list.")
+
+    except json.JSONDecodeError:
+        tasks = []
+        print("Save file is corrupted. Starting with an empty task list.")
+
+
+def add_task(name, priority, estimated_time):
+    """
+    Creates a Task object and adds it to the tasks list.
+
+    Args:
+        name (str): Task name.
+        priority (str): Task priority.
+        estimated_time (int): Estimated completion time.
+
+    Returns:
+        None
+    """
+
+    task = Task(name, priority, estimated_time)
+
+    tasks.append(task)
+
+    print("Task added:", name)
+
+
+def view_tasks():
+    """
+    Displays all tasks.
+
+    Returns:
+        None
+    """
+
+    if len(tasks) == 0:
+        print("No tasks found.")
+        return
+
+    print("========== TASK LIST ==========")
+
+    for index, task in enumerate(tasks):
+        print(f"{index + 1}. {task}")
+
+    print("===============================")
+
+def complete_task(index):
+    """
+    Marks a task as completed.
+
+    Args:
+        index (int): Zero-based index of the task.
+
+    Returns:
+        None
+    """
+
+    if index < 0 or index >= len(tasks):
+        print("Invalid task number.")
+        return
+
+    tasks[index].mark_complete()
+
+    print("Task marked complete:", tasks[index].name)
+
+
+def delete_task(index):
+    """
+    Deletes a task from the task list.
+
+    Args:
+        index (int): Zero-based index of the task.
+
+    Returns:
+        None
+    """
+
+    if index < 0 or index >= len(tasks):
+        print("Invalid task number.")
+        return
+
+    removed = tasks.pop(index)
+
+    print("Task deleted:", removed.name)
+
+
+def run_manager():
+    """
+    Main loop for the Task Manager.
+
+    Loads saved tasks, accepts user commands,
+    performs task operations, and saves tasks
+    before exiting.
+    """
+
+    load_tasks()
+
+    print()
+    print("Welcome to the Task Manager!")
+    print()
+
+    while True:
+
+        print("Options: add | view | complete | delete | save | quit")
+
+        choice = input("Choose an option: ").strip().lower()
+
+        print()
+
+        if choice == "add":
+
+            name = input("Task name: ").strip()
+
+            if len(name) == 0:
+                print("Task name cannot be empty.")
+                print()
+                continue
+
+            priority = input(
+                "Priority (high, medium, low): "
+            ).strip().lower()
+
+            try:
+                estimated_time = int(
+                    input("Estimated time in minutes: ")
+                )
+
+            except ValueError:
+                print("Please enter a whole number for estimated time.")
+                print()
+                continue
+
+            add_task(
+                name,
+                priority,
+                estimated_time
+            )
+
+        elif choice == "view":
+
+            view_tasks()
+
+        elif choice == "complete":
+
+            if len(tasks) == 0:
+                print("No tasks available.")
+                print()
+                continue
+
+            view_tasks()
+
+            try:
+
+                index = int(
+                    input("Enter task number to mark complete: ")
+                ) - 1
+
+                complete_task(index)
+
+            except ValueError:
+
+                print("Please enter a valid task number.")
+
+        elif choice == "delete":
+
+            if len(tasks) == 0:
+                print("No tasks available.")
+                print()
+                continue
+
+            view_tasks()
+
+            try:
+
+                index = int(
+                    input("Enter task number to delete: ")
+                ) - 1
+
+                delete_task(index)
+
+            except ValueError:
+
+                print("Please enter a valid task number.")
+
+        elif choice == "save":
+
+            save_tasks()
+
+        elif choice == "quit":
+
+            save_tasks()
+
+            print("Goodbye!")
+
+            break
+
+        else:
+
+            print(
+                "Option not recognized."
+            )
+            print(
+                "Please choose add, view, complete, delete, save, or quit."
+            )
+
+        print()
+
+
+run_manager()
+
+
 # In[ ]:
 
 

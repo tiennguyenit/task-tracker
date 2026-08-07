@@ -2,13 +2,19 @@
     {
         "name": "Buy groceries",
         "priority": "high",
-        "is_complete": false,
-        "estimated_time": 30
+        "estimated_time": 30,
+        "is_complete": false
     },
     {
         "name": "Buy books",
         "priority": "medium",
-        "is_complete": false,
-        "estimated_time": 20
+        "estimated_time": 20,
+        "is_complete": false
+    },
+    {
+        "name": "Buy groceries",
+        "priority": "high",
+        "estimated_time": 30,
+        "is_complete": true
     }
 ]
