@@ -1,0 +1,38 @@
+tomnguyen@Toms-MacBook-Pro-2 task-tracker % python3 -m unittest test_task.py -v
+test_recurring_str_contains_label (test_task.TestRecurringTask.test_recurring_str_contains_label)
+Test recurring label. ... ok
+test_recurring_to_dict_includes_type (test_task.TestRecurringTask.test_recurring_to_dict_includes_type)
+Test recurring to_dict(). ... ok
+test_reset (test_task.TestRecurringTask.test_reset)
+Test reset(). ... Task reset for next daily: Team standup
+ok
+test_from_dict (test_task.TestTask.test_from_dict)
+Test from_dict(). ... ok
+test_mark_complete (test_task.TestTask.test_mark_complete)
+Test mark_complete(). ... ok
+test_set_priority_invalid (test_task.TestTask.test_set_priority_invalid)
+Test invalid priority update. ... Invalid priority.
+ok
+test_set_priority_valid (test_task.TestTask.test_set_priority_valid)
+Test valid priority update. ... ok
+test_str_output (test_task.TestTask.test_str_output)
+Test string output. ... ok
+test_task_creation (test_task.TestTask.test_task_creation)
+Test task creation. ... ok
+test_task_deletion (test_task.TestTask.test_task_deletion)
+Test task deletion. ... ok
+test_to_dict (test_task.TestTask.test_to_dict)
+Test to_dict(). ... ok
+test_urgent_priority_is_always_high (test_task.TestUrgentTask.test_urgent_priority_is_always_high)
+Test urgent task priority. ... ok
+test_urgent_str_contains_deadline (test_task.TestUrgentTask.test_urgent_str_contains_deadline)
+Test deadline output. ... ok
+test_urgent_str_contains_label (test_task.TestUrgentTask.test_urgent_str_contains_label)
+Test urgent label. ... ok
+test_urgent_to_dict_includes_type (test_task.TestUrgentTask.test_urgent_to_dict_includes_type)
+Test urgent to_dict(). ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.000s
+
+OK

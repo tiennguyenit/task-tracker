@@ -1,6 +1,6 @@
 # Data Model
 
-## Section 1 – Task Dictionary Structure
+## Section 1 – Task Object Structure
 
 | Field Name | Data Type | Description | Default Value |
 |------------|-----------|-------------|---------------|
@@ -8,6 +8,15 @@
 | priority | str | Priority level (high, medium, low) | User input |
 | is_complete | bool | Indicates whether the task is completed | False |
 | estimated_time | int | Estimated time to complete the task in minutes | User input |
+
+## Section 1 – Task Object Structure
+
+| Attribute | Data Type | Description | Default Value |
+|-----------|-----------|-------------|---------------|
+| name | str | Name of the task | User input |
+| priority | str | Priority level (high, medium, low) | User input |
+| is_complete | bool | Indicates whether task is completed | False |
+| estimated_time | int | Estimated completion time in minutes | User input |
 
 ---
 
